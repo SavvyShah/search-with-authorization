@@ -1,0 +1,27 @@
+.modal__backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  width: max-content;
+  background-color: white;
+  font-family: sans-serif;
+  border-radius: var(--border-radius);
+  --border-radius: 5px;
+  --border-color: rgb(229, 228, 228);
+  --border-width: 1px;
+  --pd: 2rem; /*padding*/
+}
+.modal__section {
+  padding: 1rem var(--pd);
+}
+.modal__header {
+  border-bottom: var(--border-width) solid var(--border-color);
+}
+.modal__footer {
+  border-top: var(--border-width) solid var(--border-color);
+}
