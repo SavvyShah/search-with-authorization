@@ -10,10 +10,14 @@ import {
   SelectedFilters,
 } from "@appbaseio/reactivesearch";
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
+import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
 
 import "./App.css";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
 
 const App = () => {
+  const { isAuthenticated, user, isLoading } = useAuth0();
   //Custom query for getting hotels within a particular range
   const dateQuery = (value) => {
     let query = null;
@@ -56,7 +60,9 @@ const App = () => {
       </div>
     );
   };
-  return (
+  return isLoading ? (
+    "Loading"
+  ) : (
     <div className="main-container">
       {/* Component that connects backend */}
       <ReactiveBase
@@ -73,13 +79,19 @@ const App = () => {
         <div className="nav-container">
           <nav className="nav">
             <div className="title">Airbeds</div>
+            {isAuthenticated ? (
+              <LogoutButton className="btn" />
+            ) : (
+              <LoginButton className="btn btn--primary bold uppercase" />
+            )}
+            {isAuthenticated ? `${user.name}` : null}
           </nav>
         </div>
 
         <div className="filters-search-container">
           <div className="filter-container">
             <div className="dropdown">
-              <button className="button">Price</button>
+              <button className="btn">Price</button>
               <div className="dropdown-content">
                 {/* Price filter for hotels within range*/}
                 <RangeInput
@@ -109,7 +121,7 @@ const App = () => {
               </div>
             </div>
             <div className="dropdown">
-              <button className="button">Guests</button>
+              <button className="btn">Guests</button>
               <div className="dropdown-content-guest">
                 {/* Filter for minimum no. of guests accomodated */}
                 <NumberBox
@@ -128,7 +140,7 @@ const App = () => {
             </div>
 
             <div className="dropdown">
-              <button className="button ">When</button>
+              <button className="btn ">When</button>
               <div className="dropdown-content">
                 {/* Date filter for hotels that are available within the range */}
                 <DateRange
@@ -247,4 +259,14 @@ const App = () => {
 
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <Auth0Provider
+      domain="dev-3l5njdlu.us.auth0.com"
+      clientId="nCKDwUh12blYXCmJwcwH8oy7ZTgHw7LN"
+      redirectUri={window.location.origin}
+    >
+      <App />
+    </Auth0Provider>
+  </React.StrictMode>
+);
