@@ -235,3 +235,10 @@ h2 {
 .uppercase {
   text-transform: uppercase;
 }
+.right {
+  display: block;
+  margin-left: auto;
+}
+.text-center {
+  text-align: center;
+}

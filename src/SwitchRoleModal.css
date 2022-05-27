@@ -1,3 +1,66 @@
+.modal__backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  width: max-content;
+  background-color: white;
+  font-family: sans-serif;
+  border-radius: var(--border-radius);
+  --border-radius: 5px;
+  --border-color: rgb(229, 228, 228);
+  --border-width: 1px;
+  --pd: 2rem; /*padding*/
+}
+.modal__section {
+  padding: 1rem var(--pd);
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--border-width) solid var(--border-color);
+  font-size: 1.5rem;
+}
+.modal__title {
+  margin: auto;
+}
+.modal__footer {
+  border-top: var(--border-width) solid var(--border-color);
+}
+.modal__close-btn {
+  cursor: pointer;
+}
+
+.modal__body {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+}
+.option {
+  width: 40%;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+.option:hover {
+  box-sizing: border-box;
+  border: 2px solid #93cdf7;
+  background-color: #f0f7f9;
+}
+.option--selected,
+.option--selected:hover {
+  background-color: #93cdf7;
+  border: 2px solid #93cdf7;
+}
+.option__title {
+  font-size: 1.5rem;
+}
 .option__icon {
-  font-size: 2rem;
+  font-size: 3rem;
 }
