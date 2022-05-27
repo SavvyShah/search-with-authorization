@@ -260,13 +260,11 @@ const App = () => {
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <React.StrictMode>
-    <Auth0Provider
-      domain="dev-3l5njdlu.us.auth0.com"
-      clientId="nCKDwUh12blYXCmJwcwH8oy7ZTgHw7LN"
-      redirectUri={window.location.origin}
-    >
-      <App />
-    </Auth0Provider>
-  </React.StrictMode>
+  <Auth0Provider
+    domain="dev-3l5njdlu.us.auth0.com"
+    clientId="nCKDwUh12blYXCmJwcwH8oy7ZTgHw7LN"
+    redirectUri={window.location.origin}
+  >
+    <App />
+  </Auth0Provider>
 );
