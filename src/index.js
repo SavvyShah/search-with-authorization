@@ -17,6 +17,7 @@ import "./Modal.css";
 import LoginButton from "./LoginButton";
 import ProfileDropdown from "./ProfileDropdown";
 import ListingForm from "./ListingForm";
+import RoleSwitchModal from "./SwitchRoleModal";
 
 const App = () => {
   const { isAuthenticated, user, isLoading, logout } = useAuth0();
@@ -67,9 +68,16 @@ const App = () => {
     "Loading"
   ) : (
     <div className="main-container">
-      {/* Component that connects backend */}
       {modal === "listing-form" ? (
         <ListingForm onClose={() => setModal("")} />
+      ) : null}
+      {modal === "role-switch" ? (
+        <RoleSwitchModal
+          onClose={() => setModal("")}
+          onSave={(role) => {
+            setModal("");
+          }}
+        />
       ) : null}
       <ReactiveBase
         app="clone-airbeds"

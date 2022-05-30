@@ -8,7 +8,18 @@ const auth0 = new ManagementClient({
 exports.handler = async function (event, context) {
   try {
     const params = JSON.parse(event.body);
-    const roles = await auth0.assignRolestoUser(params);
+    const allRoles = await auth0.getRoles();
+    await auth0.removeRolesFromUser(
+      { id: params.user_id },
+      { roles: allRoles.map((role) => role.id) }
+    );
+    const matchedRoles = allRoles.filter((role) => role.name === params.role);
+    const roles = await auth0.assignRolestoUser(
+      {
+        id: params.user_id,
+      },
+      { roles: matchedRoles.map((role) => role.id) }
+    );
     return {
       statusCode: 200,
       body: JSON.stringify(roles),
@@ -16,7 +27,7 @@ exports.handler = async function (event, context) {
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: err.message }),
+      body: JSON.stringify({ error: err.message }),
     };
   }
 };
