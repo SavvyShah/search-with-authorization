@@ -15,10 +15,10 @@ import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
 import "./Modal.css";
 import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import ProfileDropdown from "./ProfileDropdown";
 
 const App = () => {
-  const { isAuthenticated, user, isLoading } = useAuth0();
+  const { isAuthenticated, user, isLoading, logout } = useAuth0();
   //Custom query for getting hotels within a particular range
   const dateQuery = (value) => {
     let query = null;
@@ -81,11 +81,19 @@ const App = () => {
           <nav className="nav">
             <div className="title">Airbeds</div>
             {isAuthenticated ? (
-              <LogoutButton className="btn" />
+              <ProfileDropdown
+                picture={user.picture}
+                username={user.given_name}
+                actions={[
+                  {
+                    text: "Logout",
+                    onClick: () => logout({ returnTo: window.location.origin }),
+                  },
+                ]}
+              />
             ) : (
               <LoginButton className="btn btn--primary bold uppercase" />
             )}
-            {isAuthenticated ? `${user.name}` : null}
           </nav>
         </div>
 
