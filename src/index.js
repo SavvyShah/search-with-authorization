@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import moment from "moment";
 import {
@@ -16,9 +16,11 @@ import "./App.css";
 import "./Modal.css";
 import LoginButton from "./LoginButton";
 import ProfileDropdown from "./ProfileDropdown";
+import ListingForm from "./ListingForm";
 
 const App = () => {
   const { isAuthenticated, user, isLoading, logout } = useAuth0();
+  const [modal, setModal] = useState("");
   //Custom query for getting hotels within a particular range
   const dateQuery = (value) => {
     let query = null;
@@ -66,6 +68,9 @@ const App = () => {
   ) : (
     <div className="main-container">
       {/* Component that connects backend */}
+      {modal === "listing-form" ? (
+        <ListingForm onClose={() => setModal("")} />
+      ) : null}
       <ReactiveBase
         app="clone-airbeds"
         url="https://73afb5484d0e:26bd5cb0-1afc-4e19-8870-4a2eda8d0b56@appbase-demo-ansible-abxiydt-arc.searchbase.io"
@@ -93,12 +98,12 @@ const App = () => {
                   {
                     text: "Change roles",
                     icon: <i className="fa fa-exchange"></i>,
-                    onClick: () => console.log("Change roles"),
+                    onClick: () => setModal("role-switch"),
                   },
                   {
                     text: "Add listing",
                     icon: <i className="fa fa-plus"></i>,
-                    onClick: () => console.log("Add listing"),
+                    onClick: () => setModal("listing-form"),
                   },
                 ]}
               />
