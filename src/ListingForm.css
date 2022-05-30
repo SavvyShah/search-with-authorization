@@ -1,0 +1,16 @@
+.listing {
+  width: 45vw;
+  min-width: 350px;
+  max-width: 500px;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.input__label {
+  color: gray;
+}
+.input__box {
+  padding: 0.25rem;
+}
