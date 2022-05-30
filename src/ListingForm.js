@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useState } from "react";
 
@@ -5,7 +6,7 @@ import "./ListingForm.css";
 
 const defaultState = {
   name: "",
-  location: "",
+  host: "",
   accomodates: 0,
   price: 0,
   dateFrom: "",
@@ -15,6 +16,7 @@ const defaultState = {
 
 export default function ListingForm({ onClose }) {
   const [listing, setListing] = useState(defaultState);
+  const { user } = useAuth0();
   const handleChange = (e) => {
     setListing({ ...listing, [e.target.name]: e.target.value });
   };
@@ -26,7 +28,7 @@ export default function ListingForm({ onClose }) {
           `Validation Error: "Available from" should not be greater than "Available to"`
         );
       } else {
-        const res = await fetch("/.netlify/function/createListing", {
+        const res = await fetch("/.netlify/functions/createListing", {
           method: "POST",
           body: JSON.stringify({
             name: listing.name,
@@ -44,10 +46,13 @@ export default function ListingForm({ onClose }) {
               lon: -122.36470165349674 * Math.random() * 5,
               lat: 47.667596803320116 * Math.random() * 5,
             },
+            user_id: user.sub,
           }),
         });
         const savedListing = await res.json();
-        if (savedListing) {
+        if (savedListing.error) {
+          throw new Error(savedListing.error);
+        } else {
           setListing(defaultState);
           alert("Success! your listing has been created");
         }
@@ -82,17 +87,17 @@ export default function ListingForm({ onClose }) {
           </div>
 
           <div className="input">
-            <label className="input__label" htmlFor="listing-location">
-              Location
+            <label className="input__label" htmlFor="listing-host">
+              Host name
             </label>
             <input
               onChange={handleChange}
               required
               className="input__box"
-              id="listing-location"
+              id="listing-host"
               type="text"
-              name="location"
-              value={listing.location}
+              name="host"
+              value={listing.host}
             />
           </div>
 
