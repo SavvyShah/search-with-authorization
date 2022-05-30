@@ -13,8 +13,10 @@ exports.handler = async function (event, context) {
       statusCode: 200,
       body: JSON.stringify(roles),
     };
-  } catch (e) {
-    console.error(e);
-    return { statusCode: 500, body: JSON.stringify(e) };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: err.message }),
+    };
   }
 };

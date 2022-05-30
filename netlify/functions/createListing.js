@@ -22,11 +22,10 @@ exports.handler = async function (event, context) {
       statusCode: 200,
       body: JSON.stringify(doc),
     };
-  } catch (e) {
-    console.log(e);
+  } catch (err) {
     return {
       statusCode: 500,
-      error: e,
+      body: JSON.stringify({ message: err.message }),
     };
   }
 };
