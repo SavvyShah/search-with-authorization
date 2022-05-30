@@ -87,7 +87,18 @@ const App = () => {
                 actions={[
                   {
                     text: "Logout",
+                    icon: <i className="fa fa-sign-out"></i>,
                     onClick: () => logout({ returnTo: window.location.origin }),
+                  },
+                  {
+                    text: "Change roles",
+                    icon: <i className="fa fa-exchange"></i>,
+                    onClick: () => console.log("Change roles"),
+                  },
+                  {
+                    text: "Add listing",
+                    icon: <i className="fa fa-plus"></i>,
+                    onClick: () => console.log("Add listing"),
                   },
                 ]}
               />
