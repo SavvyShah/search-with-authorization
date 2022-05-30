@@ -21,7 +21,9 @@ body {
   color: #fff;
   height: 80px;
   padding: 0 10px 0 25px;
-  @media all and (max-width: 768px) {
+}
+@media all and (max-width: 768px) {
+  .nav-container {
     flex-direction: column;
     height: 100px;
   }
