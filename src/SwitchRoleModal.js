@@ -45,7 +45,9 @@ export default function SwitchRoleModal({ onSave, onClose }) {
           </div>
         </section>
         <section className="modal__section modal__footer">
-          <button className="btn btn-primary right">Save</button>
+          <button className="btn btn-primary right" onClick={handleSave}>
+            Save
+          </button>
         </section>
       </div>
     </div>
