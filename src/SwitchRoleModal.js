@@ -1,13 +1,16 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useState } from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 import "./SwitchRoleModal.css";
 
 export default function SwitchRoleModal({ onSave, onClose }) {
   const [selected, setSelected] = useState();
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth0();
   const handleSave = async () => {
+    setLoading(true);
     try {
       const res = await fetch("/.netlify/functions/assignRole", {
         method: "PUT",
@@ -26,10 +29,13 @@ export default function SwitchRoleModal({ onSave, onClose }) {
       alert(error.message);
     }
     onSave(selected);
+
+    setLoading(false);
   };
 
   return (
     <div className="modal__backdrop">
+      {loading ? <LoadingSpinner /> : null}
       <div className="modal">
         <section className="modal__section modal__header text-center">
           <div className="modal__title">Choose your role:</div>

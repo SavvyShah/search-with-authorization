@@ -18,6 +18,7 @@ import LoginButton from "./LoginButton";
 import ProfileDropdown from "./ProfileDropdown";
 import ListingForm from "./ListingForm";
 import RoleSwitchModal from "./SwitchRoleModal";
+import LoadingSpinner from "./LoadingSpinner";
 
 const App = () => {
   const { isAuthenticated, user, isLoading, logout } = useAuth0();
@@ -65,7 +66,7 @@ const App = () => {
     );
   };
   return isLoading ? (
-    "Loading"
+    <LoadingSpinner />
   ) : (
     <div className="main-container">
       {modal === "listing-form" ? (

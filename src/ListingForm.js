@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 import "./ListingForm.css";
+import LoadingSpinner from "./LoadingSpinner";
 
 const defaultState = {
   name: "",
@@ -16,11 +17,13 @@ const defaultState = {
 
 export default function ListingForm({ onClose }) {
   const [listing, setListing] = useState(defaultState);
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth0();
   const handleChange = (e) => {
     setListing({ ...listing, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       if (listing.dateFrom > listing.dateTo) {
@@ -60,9 +63,13 @@ export default function ListingForm({ onClose }) {
     } catch (e) {
       alert(e.message);
     }
+
+    setLoading(false);
+    onClose(e);
   };
   return (
     <div className="modal__backdrop">
+      {loading ? <LoadingSpinner /> : null}
       <div className="modal">
         <form className="listing" onSubmit={handleSubmit}>
           <section className="modal__section modal__header text-center">
