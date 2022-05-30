@@ -3,20 +3,22 @@ import { useState } from "react";
 
 import "./ListingForm.css";
 
+const defaultState = {
+  name: "",
+  location: "",
+  accomodates: 0,
+  price: 0,
+  dateFrom: "",
+  dateTo: "",
+  bedroom: 0,
+};
+
 export default function ListingForm({ onClose }) {
-  const [listing, setListing] = useState({
-    name: "",
-    location: "",
-    accomodates: 0,
-    price: 0,
-    dateFrom: "",
-    dateTo: "",
-    bedroom: 0,
-  });
+  const [listing, setListing] = useState(defaultState);
   const handleChange = (e) => {
     setListing({ ...listing, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (listing.dateFrom > listing.dateTo) {
@@ -24,7 +26,31 @@ export default function ListingForm({ onClose }) {
           `Validation Error: "Available from" should not be greater than "Available to"`
         );
       } else {
-        console.log({ e });
+        const res = await fetch("/.netlify/function/createListing", {
+          method: "POST",
+          body: JSON.stringify({
+            name: listing.name,
+            date_to: listing.dateTo,
+            date_from: listing.dateFrom,
+            bedrooms: listing.bedroom,
+            host_name: listing.host_name || "Anonymous",
+            listing_url: "https://www.airbnb.com/rooms/1781873",
+            image:
+              "https://a1.muscache.com/im/pictures/25123883/1d7c2b2e_original.jpg?aki_policy=medium",
+            has_availability: true,
+            beds: 2,
+            bed_type: "Real bed",
+            location: {
+              lon: -122.36470165349674 * Math.random() * 5,
+              lat: 47.667596803320116 * Math.random() * 5,
+            },
+          }),
+        });
+        const savedListing = await res.json();
+        if (savedListing) {
+          setListing(defaultState);
+          alert("Success! your listing has been created");
+        }
       }
     } catch (e) {
       alert(e.message);
