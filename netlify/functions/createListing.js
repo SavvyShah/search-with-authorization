@@ -5,7 +5,7 @@ exports.handler = async function (event, context) {
     const appbaseRef = Appbase({
       url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
       app: "clone-airbeds",
-      credentials: "f1644117fa15:18268a00-44f3-4990-bcea-b391ef459318",
+      credentials: process.env.APPBASE_API_CREDENTIAL,
     });
     const doc = await appbaseRef.index({
       body: {
