@@ -68,6 +68,7 @@ export default function ListingForm({ onClose }) {
           });
         }
       }
+      onClose(e);
     } catch (error) {
       swal.fire({
         title: "Error",
@@ -75,10 +76,9 @@ export default function ListingForm({ onClose }) {
         icon: "error",
         confirmButtonColor: "#32b5f9",
       });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
-    onClose(e);
   };
   return (
     <div className="modal__backdrop">
