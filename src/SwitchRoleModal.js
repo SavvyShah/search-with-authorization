@@ -1,15 +1,27 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import swal from "sweetalert2";
 
 import "./SwitchRoleModal.css";
 import LoadingSpinner from "./LoadingSpinner";
+import useRole from "./useRole";
 
 export default function SwitchRoleModal({ onSave, onClose }) {
   const [selected, setSelected] = useState();
   const [loading, setLoading] = useState(false);
   const { user } = useAuth0();
+  const role = useRole();
+
+  useEffect(() => {
+    if (role) {
+      setSelected(role.name);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [role]);
+
   const handleSave = async () => {
     setLoading(true);
     try {
