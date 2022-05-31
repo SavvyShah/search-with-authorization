@@ -49,7 +49,7 @@ export default function SwitchRoleModal({ onSave, onClose }) {
       {loading ? <LoadingSpinner /> : null}
       <div className="modal">
         <section className="modal__section modal__header text-center">
-          <div className="modal__title">Choose your role:</div>
+          <div className="modal__title">Choose your role</div>
           <div className="modal__close-btn" onClick={onClose}>
             <i className="fa fa-times"></i>
           </div>

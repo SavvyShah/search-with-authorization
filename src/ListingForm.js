@@ -86,7 +86,7 @@ export default function ListingForm({ onClose }) {
       <div className="modal">
         <form className="listing" onSubmit={handleSubmit}>
           <section className="modal__section modal__header text-center">
-            <div className="modal__title">Listing form:</div>
+            <div className="modal__title">Listing form</div>
             <div className="modal__close-btn" onClick={onClose}>
               <i className="fa fa-times"></i>
             </div>
