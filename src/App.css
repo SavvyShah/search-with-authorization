@@ -248,3 +248,6 @@ h2 {
 .swal2-container {
   font-family: sans-serif;
 }
+.dateFilter {
+  width: 300px;
+}
