@@ -7,12 +7,12 @@ export default function useRole() {
   useEffect(() => {
     (async function () {
       if (isAuthenticated) {
-        const res = await fetch("/.netlify/functions/getRole", {
-          method: "POST",
-          body: JSON.stringify({
-            user_id: user.sub,
-          }),
-        });
+        const res = await fetch(
+          `/.netlify/functions/getRole?user_id=${user.sub}`,
+          {
+            method: "GET",
+          }
+        );
         const data = await res.json();
         setRole(data);
       }

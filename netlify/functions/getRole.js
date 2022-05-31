@@ -8,7 +8,7 @@ const auth0 = new ManagementClient({
 
 exports.handler = async function (event, context) {
   try {
-    const { user_id } = JSON.parse(event.body);
+    const { user_id } = event.queryStringParameters;
     const roles = await auth0.getUserRoles({ id: user_id });
     return {
       statusCode: 200,
