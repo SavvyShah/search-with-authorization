@@ -1,10 +1,11 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import swal from "sweetalert2";
 
 import "./ListingForm.css";
 import LoadingSpinner from "./LoadingSpinner";
+import useRole from "./useRole";
 
 const defaultState = {
   name: "",
@@ -20,9 +21,27 @@ export default function ListingForm({ onClose }) {
   const [listing, setListing] = useState(defaultState);
   const [loading, setLoading] = useState(false);
   const { user } = useAuth0();
+  const role = useRole();
+
+  useEffect(() => {
+    if (role && role.name !== "host") {
+      swal.fire({
+        title: "Heads-up",
+        icon: "info",
+        text: "It doesn't seem you are a host. Only hosts can create a listing. You can change your role from the dropdown.",
+        confirmButtonColor: "#32b5f9",
+      });
+      setLoading(false);
+    } else if (role) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [role]);
   const handleChange = (e) => {
     setListing({ ...listing, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
