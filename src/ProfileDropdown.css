@@ -12,7 +12,7 @@
   border-radius: 50%;
 }
 .profile__text {
-  margin: 0.25rem;
+  margin: 0.5rem;
 }
 .profile__dropdown {
   position: absolute;
@@ -29,6 +29,7 @@
   background-color: #f9f9f9;
   padding: 0.5rem 2rem;
   border: none;
+  text-align: left;
 }
 .dropdown__item:hover {
   cursor: pointer;
