@@ -27,7 +27,10 @@ exports.handler = async function (event, context) {
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
+      body: JSON.stringify({
+        error:
+          "Please select a valid role. This may happen if you haven't selected any role.",
+      }),
     };
   }
 };
