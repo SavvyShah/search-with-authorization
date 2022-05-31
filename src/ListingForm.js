@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useState } from "react";
+import swal from "sweetalert2";
 
 import "./ListingForm.css";
 import LoadingSpinner from "./LoadingSpinner";
@@ -57,11 +58,21 @@ export default function ListingForm({ onClose }) {
           throw new Error(savedListing.error);
         } else {
           setListing(defaultState);
-          alert("Success! your listing has been created");
+          swal.fire({
+            title: "Success",
+            text: "Your listing has been created. It should be searchable now.",
+            icon: "success",
+            confirmButtonColor: "#32b5f9",
+          });
         }
       }
-    } catch (e) {
-      alert(e.message);
+    } catch (error) {
+      swal.fire({
+        title: "Error",
+        text: error.message,
+        icon: "error",
+        confirmButtonColor: "#32b5f9",
+      });
     }
 
     setLoading(false);

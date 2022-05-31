@@ -1,9 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useState } from "react";
-import LoadingSpinner from "./LoadingSpinner";
+import swal from "sweetalert2";
 
 import "./SwitchRoleModal.css";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function SwitchRoleModal({ onSave, onClose }) {
   const [selected, setSelected] = useState();
@@ -23,10 +24,20 @@ export default function SwitchRoleModal({ onSave, onClose }) {
       if (data.error) {
         throw new Error(data.error);
       } else {
-        alert("Role changed successfully");
+        swal.fire({
+          title: "Success",
+          text: `Role changed to "${selected}"`,
+          icon: "success",
+          confirmButtonColor: "#32b5f9",
+        });
       }
     } catch (error) {
-      alert(error.message);
+      swal.fire({
+        title: "Error",
+        text: error.message,
+        icon: "error",
+        confirmButtonColor: "#32b5f9",
+      });
     }
     onSave(selected);
 

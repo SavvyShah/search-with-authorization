@@ -245,3 +245,6 @@ h2 {
 .m-l-1 {
   margin-left: 0.25rem;
 }
+.swal2-container {
+  font-family: sans-serif;
+}
