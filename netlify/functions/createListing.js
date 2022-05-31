@@ -26,7 +26,9 @@ exports.handler = async function (event, context) {
         body: JSON.stringify(doc),
       };
     } else {
-      throw new Error("Unauthorized: User doesn't have necessary permission");
+      throw new Error(
+        "Your listing couldn't be created as your role is guest. Become a host to create the listing."
+      );
     }
   } catch (error) {
     return {
