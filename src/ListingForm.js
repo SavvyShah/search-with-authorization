@@ -39,6 +39,8 @@ export default function ListingForm({ onClose }) {
             date_to: listing.dateTo,
             date_from: listing.dateFrom,
             bedrooms: listing.bedroom,
+            accomodates: listing.accomodates,
+            price: listing.price,
             host_name: listing.host_name || "Anonymous",
             listing_url: "https://www.airbnb.com/rooms/1781873",
             image:
@@ -47,8 +49,8 @@ export default function ListingForm({ onClose }) {
             beds: 2,
             bed_type: "Real bed",
             location: {
-              lon: -122.36470165349674 * Math.random() * 5,
-              lat: 47.667596803320116 * Math.random() * 5,
+              lon: -122.36470165349674 + Math.random(),
+              lat: 47.667596803320116 + Math.random(),
             },
             user_id: user.sub,
           }),
