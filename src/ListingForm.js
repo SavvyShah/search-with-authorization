@@ -28,7 +28,7 @@ export default function ListingForm({ onClose }) {
       swal.fire({
         title: "Heads-up",
         icon: "info",
-        text: "It doesn't seem you are a host. Only hosts can create a listing. You can change your role from the dropdown.",
+        text: "You aren't a host. Only hosts can create a listing. You can change your role from the dropdown.",
         confirmButtonColor: "#32b5f9",
       });
       setLoading(false);

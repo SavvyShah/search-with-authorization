@@ -12,7 +12,7 @@ exports.handler = async function (event, context) {
     const roles = await auth0.getUserRoles({ id: user_id });
     return {
       statusCode: 200,
-      body: JSON.stringify(roles[0]),
+      body: JSON.stringify(roles[0] ? roles[0] : {}),
     };
   } catch (error) {
     console.log({ error });
