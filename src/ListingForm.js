@@ -40,119 +40,123 @@ export default function ListingForm({ onClose }) {
               <i className="fa fa-times"></i>
             </div>
           </section>
-          <div className="input">
-            <label className="input__label" htmlFor="listing-name">
-              Name
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-name"
-              type="text"
-              name="name"
-              value={listing.name}
-            />
-          </div>
+          <section className="modal__section listing__content">
+            <div className="input">
+              <label className="input__label" htmlFor="listing-name">
+                Name
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-name"
+                type="text"
+                name="name"
+                value={listing.name}
+              />
+            </div>
 
-          <div className="input">
-            <label className="input__label" htmlFor="listing-host">
-              Host name
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-host"
-              type="text"
-              name="host"
-              value={listing.host}
-            />
-          </div>
+            <div className="input">
+              <label className="input__label" htmlFor="listing-host">
+                Host name
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-host"
+                type="text"
+                name="host"
+                value={listing.host}
+              />
+            </div>
 
-          <div className="input">
-            <label className="input__label" htmlFor="listing-price">
-              Price
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-price"
-              type="number"
-              min={0}
-              name="price"
-              value={listing.price}
-            />
-          </div>
+            <div className="input">
+              <label className="input__label" htmlFor="listing-price">
+                Price
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-price"
+                type="number"
+                min={0}
+                name="price"
+                value={listing.price}
+              />
+            </div>
 
-          <div className="input">
-            <label className="input__label" htmlFor="listing-accomodates">
-              Accomodates
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-accomodates"
-              type="number"
-              min={0}
-              name="accomodates"
-              value={listing.accomodates}
-            />
-          </div>
+            <div className="input">
+              <label className="input__label" htmlFor="listing-accomodates">
+                Accomodates
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-accomodates"
+                type="number"
+                min={0}
+                name="accomodates"
+                value={listing.accomodates}
+              />
+            </div>
 
-          <div className="input">
-            <label className="input__label" htmlFor="listing-dateFrom">
-              Available from
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-dateFrom"
-              type="date"
-              name="dateFrom"
-              value={listing.dateFrom}
-            />
-          </div>
+            <div className="input">
+              <label className="input__label" htmlFor="listing-dateFrom">
+                Available from
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-dateFrom"
+                type="date"
+                name="dateFrom"
+                value={listing.dateFrom}
+              />
+            </div>
 
-          <div className="input">
-            <label className="input__label" htmlFor="listing-dateTo">
-              Available to
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-dateTo"
-              type="date"
-              name="dateTo"
-              value={listing.dateTo}
-            />
-          </div>
-          <div className="input">
-            <label className="input__label" htmlFor="listing-bedroom">
-              Bedrooms
-            </label>
-            <input
-              onChange={handleChange}
-              required
-              className="input__box"
-              id="listing-bedroom"
-              type="number"
-              min={0}
-              name="bedroom"
-              value={listing.bedroom}
-            />
-          </div>
-          <div className="input">
-            <input
-              onChange={handleChange}
-              type="submit"
-              className="btn btn--primary"
-            />
-          </div>
+            <div className="input">
+              <label className="input__label" htmlFor="listing-dateTo">
+                Available to
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-dateTo"
+                type="date"
+                name="dateTo"
+                value={listing.dateTo}
+              />
+            </div>
+            <div className="input">
+              <label className="input__label" htmlFor="listing-bedroom">
+                Bedrooms
+              </label>
+              <input
+                onChange={handleChange}
+                required
+                className="input__box"
+                id="listing-bedroom"
+                type="number"
+                min={0}
+                name="bedroom"
+                value={listing.bedroom}
+              />
+            </div>
+          </section>
+          <section className="modal__section modal__footer">
+            <div className="input">
+              <input
+                onChange={handleChange}
+                type="submit"
+                className="btn btn--primary"
+              />
+            </div>
+          </section>
         </form>
       </div>
     </div>
