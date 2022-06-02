@@ -151,6 +151,7 @@ export default function App() {
               placeholder="Search housings..."
               iconPosition="left"
               className="search"
+              showClear
             />
           </div>
           <div className="selected-container">
