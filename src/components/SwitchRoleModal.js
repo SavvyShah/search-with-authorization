@@ -3,9 +3,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import swal from "sweetalert2";
 
-import "./SwitchRoleModal.css";
+import "./styles/SwitchRoleModal.css";
 import LoadingSpinner from "./LoadingSpinner";
-import useRole from "./useRole";
+import useRole from "../useRole";
 
 export default function SwitchRoleModal({ onSave, onClose }) {
   const [selected, setSelected] = useState();
