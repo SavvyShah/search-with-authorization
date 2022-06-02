@@ -6,7 +6,7 @@ import "./ListingForm.css";
 export default function ListingForm({ onClose }) {
   const [listing, setListing] = useState({
     name: "",
-    location: "",
+    host: "",
     accomodates: 0,
     price: 0,
     dateFrom: "",
@@ -56,17 +56,17 @@ export default function ListingForm({ onClose }) {
           </div>
 
           <div className="input">
-            <label className="input__label" htmlFor="listing-location">
-              Location
+            <label className="input__label" htmlFor="listing-host">
+              Host name
             </label>
             <input
               onChange={handleChange}
               required
               className="input__box"
-              id="listing-location"
+              id="listing-host"
               type="text"
-              name="location"
-              value={listing.location}
+              name="host"
+              value={listing.host}
             />
           </div>
 
