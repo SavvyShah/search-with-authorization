@@ -130,6 +130,8 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+  height: 500px;
+  overflow-y: scroll;
 }
 .card {
   width: 44%;
@@ -252,4 +254,9 @@ h2 {
 }
 .dateFilter {
   width: 300px;
+}
+.stickyTop {
+  position: sticky;
+  top: 0px;
+  z-index: 3;
 }

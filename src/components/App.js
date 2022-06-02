@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 import {
   ReactiveBase,
@@ -9,15 +9,12 @@ import {
   SelectedFilters,
 } from "@appbaseio/reactivesearch";
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
-import { useAuth0 } from "@auth0/auth0-react";
 
 import "./styles/App.css";
 import "./styles/Modal.css";
 import Navbar from "./Navbar";
-import LoadingSpinner from "./LoadingSpinner";
 
 export default function App() {
-  const { isLoading } = useAuth0();
   //Custom query for getting hotels within a particular range
   const dateQuery = (value) => {
     let query = null;
@@ -60,9 +57,7 @@ export default function App() {
       </div>
     );
   };
-  return isLoading ? (
-    <LoadingSpinner />
-  ) : (
+  return (
     <div className="main-container">
       <Navbar />
       <ReactiveBase
