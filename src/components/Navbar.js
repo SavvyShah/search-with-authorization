@@ -5,6 +5,7 @@ import LoadingSpinner from "./LoadingSpinner";
 
 import LoginButton from "./LoginButton";
 import ProfileDropdown from "./ProfileDropdown";
+import renderModal from "./renderModal";
 import SwitchRoleModal from "./SwitchRoleModal";
 
 export default function Navbar() {
@@ -13,17 +14,7 @@ export default function Navbar() {
   return (
     <div className="stickyTop">
       {isLoading ? <LoadingSpinner /> : null}
-      {modal === "listing-form" ? (
-        <ListingForm onClose={() => setModal("")} />
-      ) : null}
-      {modal === "role-switch" ? (
-        <SwitchRoleModal
-          onClose={() => setModal("")}
-          onSave={(role) => {
-            setModal("");
-          }}
-        />
-      ) : null}
+      {renderModal(modal, () => setModal(""))}
       <div className="nav-container">
         <nav className="nav">
           <div className="title">Airbeds</div>
