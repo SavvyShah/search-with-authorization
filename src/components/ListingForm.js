@@ -10,11 +10,11 @@ import useRole from "../useRole";
 const defaultState = {
   name: "",
   host: "",
-  accomodates: 0,
-  price: 0,
+  accomodates: 1,
+  price: 10,
   dateFrom: "",
   dateTo: "",
-  bedroom: 0,
+  bedroom: 1,
 };
 
 export default function ListingForm({ onClose }) {
@@ -153,7 +153,7 @@ export default function ListingForm({ onClose }) {
                 className="input__box"
                 id="listing-price"
                 type="number"
-                min={50}
+                min={10}
                 name="price"
                 value={listing.price}
               />
@@ -169,7 +169,7 @@ export default function ListingForm({ onClose }) {
                 className="input__box"
                 id="listing-accomodates"
                 type="number"
-                min={0}
+                min={1}
                 name="accomodates"
                 value={listing.accomodates}
               />
@@ -214,7 +214,7 @@ export default function ListingForm({ onClose }) {
                 className="input__box"
                 id="listing-bedroom"
                 type="number"
-                min={0}
+                min={1}
                 name="bedroom"
                 value={listing.bedroom}
               />
