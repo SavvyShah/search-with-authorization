@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Search with authorization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app builds upon [Airbnb clone app](https://blog.reactivesearch.io/geo-search-with-react-and-elasticsearch). It shows listings of available stays where users can search and filter according to price, no. of guests, and date ranges. We are going to extend it, to include authentication and authorization.
 
-## Available Scripts
+Our extended app would have a login mechanism that would allow users to sign up/sign in. Each user would have a role assigned to them, either `guest` or `host`. As a `host` they would be able to create a listing but not as a `guest`. They would also be able to switch roles to test both types.
 
-In the project directory, you can run:
+You can have a look at the [live app.](https://search-with-auth.netlify.app/)
 
-### `yarn start`
+## Running locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This app is built and deployed using netlify. It uses netlify functions to perform server side operations.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+For building the app locally we would use `netlify-cli`. We can install it using the below command.
 
-### `yarn test`
+```sh
+npm i -g netlify-cli
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We then need to install the app dependencies.
 
-### `yarn build`
+```sh
+yarn
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then we need to make a `.env` file into the root directory. It should have following variables filled.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+AUTH0_DOMAIN=
+AUTH0_CLIENT_ID=
+AUTH0_CLIENT_SECRET=
+APPBASE_API_CREDENTIAL=
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We can then run
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+netlify dev
+```
