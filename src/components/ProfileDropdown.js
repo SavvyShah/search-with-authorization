@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./ProfileDropdown.css";
+import "./styles/ProfileDropdown.css";
 
 export default function ProfileDropdown({ picture, username, actions }) {
   const [showDropdown, setShowDropdown] = useState(false);
