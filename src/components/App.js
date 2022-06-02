@@ -13,15 +13,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import "./styles/App.css";
 import "./styles/Modal.css";
-import LoginButton from "./LoginButton";
-import ProfileDropdown from "./ProfileDropdown";
-import ListingForm from "./ListingForm";
-import RoleSwitchModal from "./SwitchRoleModal";
+import Navbar from "./Navbar";
 import LoadingSpinner from "./LoadingSpinner";
 
 export default function App() {
-  const { isAuthenticated, user, isLoading, logout } = useAuth0();
-  const [modal, setModal] = useState("");
+  const { isLoading } = useAuth0();
   //Custom query for getting hotels within a particular range
   const dateQuery = (value) => {
     let query = null;
@@ -68,17 +64,7 @@ export default function App() {
     <LoadingSpinner />
   ) : (
     <div className="main-container">
-      {modal === "listing-form" ? (
-        <ListingForm onClose={() => setModal("")} />
-      ) : null}
-      {modal === "role-switch" ? (
-        <RoleSwitchModal
-          onClose={() => setModal("")}
-          onSave={(role) => {
-            setModal("");
-          }}
-        />
-      ) : null}
+      <Navbar />
       <ReactiveBase
         app="clone-airbeds"
         url="https://73afb5484d0e:26bd5cb0-1afc-4e19-8870-4a2eda8d0b56@appbase-demo-ansible-abxiydt-arc.searchbase.io"
@@ -90,37 +76,6 @@ export default function App() {
           },
         }}
       >
-        <div className="nav-container">
-          <nav className="nav">
-            <div className="title">Airbeds</div>
-            {isAuthenticated ? (
-              <ProfileDropdown
-                picture={user.picture}
-                username={user.given_name}
-                actions={[
-                  {
-                    text: "Logout",
-                    icon: <i className="fa fa-sign-out"></i>,
-                    onClick: () => logout({ returnTo: window.location.origin }),
-                  },
-                  {
-                    text: "Change roles",
-                    icon: <i className="fa fa-exchange"></i>,
-                    onClick: () => setModal("role-switch"),
-                  },
-                  {
-                    text: "Add listing",
-                    icon: <i className="fa fa-plus"></i>,
-                    onClick: () => setModal("listing-form"),
-                  },
-                ]}
-              />
-            ) : (
-              <LoginButton className="btn btn--primary bold uppercase" />
-            )}
-          </nav>
-        </div>
-
         <div className="filters-search-container">
           <div className="filter-container">
             <div className="dropdown">
