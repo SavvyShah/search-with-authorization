@@ -1,12 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
-import ListingForm from "./ListingForm";
 import LoadingSpinner from "./LoadingSpinner";
 
 import LoginButton from "./LoginButton";
 import ProfileDropdown from "./ProfileDropdown";
 import renderModal from "./renderModal";
-import SwitchRoleModal from "./SwitchRoleModal";
 
 export default function Navbar() {
   const { isAuthenticated, user, logout, isLoading } = useAuth0();
