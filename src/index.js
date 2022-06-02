@@ -17,7 +17,7 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
 const App = () => {
-  const { isAuthenticated, user, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   //Custom query for getting hotels within a particular range
   const dateQuery = (value) => {
     let query = null;
@@ -84,7 +84,6 @@ const App = () => {
             ) : (
               <LoginButton className="btn btn--primary bold uppercase" />
             )}
-            {isAuthenticated ? `${user.name}` : null}
           </nav>
         </div>
 
@@ -260,13 +259,11 @@ const App = () => {
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <React.StrictMode>
-    <Auth0Provider
-      domain="dev-3l5njdlu.us.auth0.com"
-      clientId="nCKDwUh12blYXCmJwcwH8oy7ZTgHw7LN"
-      redirectUri={window.location.origin}
-    >
-      <App />
-    </Auth0Provider>
-  </React.StrictMode>
+  <Auth0Provider
+    domain="dev-3l5njdlu.us.auth0.com"
+    clientId="nCKDwUh12blYXCmJwcwH8oy7ZTgHw7LN"
+    redirectUri={window.location.origin}
+  >
+    <App />
+  </Auth0Provider>
 );
