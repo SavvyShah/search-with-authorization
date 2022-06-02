@@ -18,12 +18,14 @@ body {
   background: linear-gradient(79.09deg, #32b5f9 0%, #419ced 100%);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   color: #fff;
-  height: 80px;
-  padding: 0 10px 0 25px;
+  /* height: 80px; */
+  padding: 10px;
+  box-sizing: border-box;
 }
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 .dropdown {
@@ -73,7 +75,7 @@ body {
 .filters-search-container {
   width: 100%;
   position: sticky;
-  top: 80px;
+  top: 70px;
   display: flex;
   z-index: 2;
   flex-direction: row;
